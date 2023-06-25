@@ -63,9 +63,29 @@ document.addEventListener("keydown", e => {
       }
  
 
+      var daysLeft = Math.abs(dateObjectOfStart.getTime() - dateObjectOfEnd.getTime());
+      var daysLeft = Math.ceil(daysLeft / (1000 * 60 * 60 * 24));
+      if(daysLeft<0){
+         daysLeft = 0;
+      }
+
+      var timeLeftHours = Math.abs(currentDate.getHours() - currentDate1.getHours());
+
+      var timeLeftMins =  Math.abs( currentDate.getMinutes() - currentDate1.getMinutes());
+              
+      var timeLeftSeconds = 60 - (currentDate.getSeconds() - currentDate1.getSeconds() );
       
-      document.getElementById('day').innerText = dateObjectOfStart ;
-      document.getElementById('clock').innerText = timeObject1 ;
+      
+
+
+
+
+
+
+
+
+      
+      document.getElementById('clock').innerText = daysLeft + ' Days ' + timeLeftHours + ':' + timeLeftMins + ':' + timeLeftSeconds + "To Go" ;
       console.log(count);
      
       if (dateObjectOfStart.getTime() === dateObjectOfEnd.getTime() && timeObject1 === timeObject2){
@@ -77,7 +97,7 @@ document.addEventListener("keydown", e => {
       
       
     }
-    const intervalId = setInterval(updateTime,10);
+    const intervalId = setInterval(updateTime,1000);
 
      
      
